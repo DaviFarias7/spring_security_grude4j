@@ -14,7 +14,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImRhdmlfdXNlciIsImV4cCI6MTcxODc0MTM3NH0.2VeaJiVOWeVHlPj7ucxp4e8lARdBvNeyWyTTZxW4sfk",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InVzZXIiLCJleHAiOjE3MTg3NDk0MjV9.GXpcPacXdVhWZ5ou1zqqNdBRGfOFa5VEHnLC3_d4Xlc",
 							"type": "string"
 						}
 					]
@@ -23,7 +23,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"teste3\",\r\n    \"price\": 2009\r\n}",
+					"raw": "{\r\n    \"name\": \"teste4\",\r\n    \"price\": 2009\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -31,14 +31,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/products",
+					"raw": "http://localhost:8080/product",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"products"
+						"product"
 					]
 				}
 			},
@@ -142,6 +142,12 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": "r0tonY4qVcWhXs7OoauF2sejOdFBVKATetbMFk"
 		}
 	]
 }
