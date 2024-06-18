@@ -1,8 +1,10 @@
 package com.security.grude4j.controllers;
 
 import com.security.grude4j.domain.user.AuthenticationDTO;
+import com.security.grude4j.domain.user.LoginResponseDTO;
 import com.security.grude4j.domain.user.RegisterDTO;
 import com.security.grude4j.domain.user.User;
+import com.security.grude4j.infra.security.TokenService;
 import com.security.grude4j.repositories.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +27,17 @@ public class AuthenticationController {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
