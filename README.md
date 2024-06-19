@@ -1,9 +1,16 @@
+# Authentication API
+
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+
 Projeto criado para demonstrar no evento 22º Meet Up Grude4J a implementação padrão da autenticação, autorização e definição de permissões de usuários utilizando Spring Security com Token JWT. Nesta aplicação foram criados dois tipos de usuários, sendo um 
 com a role "ADMIN" (Que possui a permissão de acessar todos os endpoints do tipo POST e GET) e outro com a role "USER"(Acessa apenas os endpoints do tipo GET). 
 
 
 ## <img align="center" alt="Alan-CSS" height="30" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Spring-Dark.svg">  Requisitos
-- Java 11 ou superior
+- Java 17
 - Postgress
 - Spring Boot
 - Dependências: Spring Security, Java JWT, Flyway
@@ -72,8 +79,10 @@ Exemplo de teste de ciração de usuários:
 ```
   
 - `POST /auth/register` - Efetua o login na aplicação e gera o Token JWT para ser utilizado como Bearer Token nos outros endpoints
+- `GET /auth/users` - Lista todos os usuários cadastrados (Apenas usuário com a role "ADMIN" pode executar)
 - `GET /product` - Lista todos os produtos cadastrados
 - `POST /product` - Cadastra um novo produto (Apenas usuário com a role "ADMIN" pode executar)
+- `DELETE /product` - Deleta um produto pelo id (Apenas usuário com a role "ADMIN" pode executar) 
 
 ## Configuração de Produção
 
