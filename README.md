@@ -1,0 +1,80 @@
+Projeto criado para demonstrar no evento 22º Meet Up Grude4J a implementação padrão da autenticação, autorização e definição de permissões de usuários utilizando Spring Security com Token JWT. Nesta aplicação foram criados dois tipos de usuários, sendo um 
+com a role "ADMIN" (Que possui a permissão de acessar todos os endpoints do tipo POST e GET) e outro com a role "USER"(Acessa apenas os endpoints do tipo GET). 
+
+
+## <img align="center" alt="Alan-CSS" height="30" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Spring-Dark.svg">  Requisitos
+- Java 11 ou superior
+- Postgress
+- Spring Boot
+- Dependências: Spring Security, Java JWT, Flyway
+
+
+## Criação do banco de dados Postgress
+
+- No PG Admin crie uma Database com o nome de "product"
+
+- Configure sua conexão com o bando no PG Admin e adicione as configurações no arquivo application.properties da sua aplicação:
+
+```
+spring.application.name=grude4j
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/product
+spring.datasource.username=SEU_USUARIO
+spring.datasource.password=SEU_PASSWORD
+
+api.security.token.secret=${JWT_SECRET:my-secret-key}
+
+```
+- A criação das tabelas "product" e "users" é feita pelos scripts SQL salvos nos aqruivos V1_create-product-table.sql e V2_create-table-users.sql quando a aplicação é iniciada.
+
+```
+CREATE TABLE product (
+    id TEXT PRIMARY KEY UNIQUE NOT NULL,
+    name TEXT NOT NULL,
+    price INTEGER NOT NULL
+);
+```
+```
+CREATE TABLE users (
+    id TEXT PRIMARY KEY UNIQUE NOT NULL,
+    login TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    role TEXT NOT NULL
+);
+```
+
+## Executando o Serviço Localmente
+
+1. Clone o repositório
+2. Navegue até o diretório do projeto
+3. Execute `./mvnw spring-boot:run`
+
+## Endpoints
+
+- `POST /auth/register` - Cria um novo usuário
+  
+Exemplo de teste de ciração de usuários:
+```
+{
+    "login": "admin",
+    "password": "123456",
+    "role": "ADMIN"
+}
+```
+
+
+```
+{
+    "login": "user",
+    "password": "123456",
+    "role": "USER"
+}
+```
+  
+- `POST /auth/register` - Efetua o login na aplicação e gera o Token JWT para ser utilizado como Bearer Token nos outros endpoints
+- `GET /product` - Lista todos os produtos cadastrados
+- `POST /product` - Cadastra um novo produto (Apenas usuário com a role "ADMIN" pode executar)
+
+## Configuração de Produção
+
+Para colocar em produção, você pode usar qualquer plataforma de sua escolha. Certifique-se de configurar corretamente as variáveis de ambiente para o Postgres.
