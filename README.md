@@ -5,7 +5,7 @@
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
-Projeto criado para demonstrar no evento 22º Meet Up Grude4J a implementação padrão da autenticação, autorização e definição de permissões de usuários utilizando Spring Security com Token JWT. Nesta aplicação foram criados dois tipos de usuários, sendo um 
+Projeto criado para demonstrar no evento 22º Meet Up da comunidade Grude4J (Instagram: https://www.instagram.com/grude4joficial/ site: https://grude4j.github.io/grude4jsite/) a implementação padrão da autenticação, autorização e definição de permissões de usuários utilizando Spring Security com Token JWT. Nesta aplicação foram criados dois tipos de usuários, sendo um 
 com a role "ADMIN" (Que possui a permissão de acessar todos os endpoints do tipo POST e GET) e outro com a role "USER"(Acessa apenas os endpoints do tipo GET). 
 
 
